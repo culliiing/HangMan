@@ -6,103 +6,67 @@ namespace HangMan
 {
     class Program
     {
+        // Turn all letters in any string into underscores
+        public static StringBuilder HideWord(string word)
+        {
+            StringBuilder hiddenWord = new StringBuilder();
+
+            foreach (char c in word)
+            {
+                if (c != char.Parse(" "))
+                {
+                    hiddenWord.Append("_");
+                }
+                else
+                {
+                    hiddenWord.Append(' ');
+                }
+            }
+            return hiddenWord;
+        }
 
         static void Main(string[] args)
-        //{
-        //    int wrongGuesses = 0;
-        //    Random random = new Random();
-
-        //    List<string> wordList = new List<string> {"banana", "koolaid", "program" };
-
-        //    // winningWord väljer ett ord från wordList
-        //    string winningWord = wordList[random.Next(wordList.Count)];
-        //    StringBuilder hiddenWord = new StringBuilder();
-
-        //    // Bokstäverna från winningWord ersätts med understräck och lagras i hiddenWord
-        //    foreach (char c in winningWord)
-        //    {
-        //        hiddenWord.Append("_ ");
-        //    }
-
-
-
-        //    Console.WriteLine(hiddenWord.ToString());
-
-
-
-        //    //string word= hiddenWord.ToString(); 
-        //    //char Line = char.Parse(hiddenWord.ToString());
-
-        //    Console.WriteLine("Guess a letter");
-
-        //    //string guess = Console.ReadLine();
-        //    //char guessedLetter = char.Parse(guess);
-
-        //    //Console.WriteLine(hiddenWord);
-
-        //    //foreach (char c in winningWord)
-        //    //{
-        //    //    if (c == guessedLetter && wrongGuesses! <= 6)
-        //    //    {
-        //    //        hiddenWord.Replace(char.Parse("_"), guessedLetter, i, 1);
-        //    //        Console.WriteLine("hello?");
-        //    //        break;
-
-        //    //    }
-        //    //    else if (c != guessedLetter && wrongGuesses! <= 6)
-        //    //    {
-        //    //        Console.WriteLine("Letter" + guessedLetter + "is not in the word.");
-        //    //        wrongGuesses++;
-        //    //    }
-        //    //}
-
-        //    Console.WriteLine("The Program is Over");
-        //    Console.ReadKey();
-        //}
-
         {
-            int guesses = 0;
-            bool hit = false;
+            int wrongGuesses = 0;
 
-            string winningWord = "banana";
-            StringBuilder hiddenWord = new StringBuilder("______");
-            //string word= hiddenWord.ToString(); 
+            List<string> wordList = new List<string> {"Banana", "The United Kingdom", "Something"};
 
-            //char Line = char.Parse(hiddenWord.ToString());
+            // Pick a random word from the list (stored in winningWord)
+            Random random = new Random();
+            string winningWord = wordList[random.Next(wordList.Count)];
 
-            //int i = 0;
-
-            Console.WriteLine("Guess a letter!");
-            Console.WriteLine(hiddenWord);
+            Console.WriteLine(winningWord);
+            Console.WriteLine(HideWord(winningWord));
 
 
-            while (guesses <= 6)
-            {
-                string guess = Console.ReadLine();
-                char guessedLetter = char.Parse(guess);
+            //Console.WriteLine("Guess a letter!");
+            //Console.WriteLine(HideWord(winningWord));
 
-                for (int i = 0; i < winningWord.Length; i++)
-                {
+            //while (wrongGuesses <= 6)
+            //{
+            //    string guess = Console.ReadLine();
+            //    char guessedLetter = char.Parse(guess);
+
+            //    for (int i = 0; i < winningWord.Length; i++)
+            //    {
                   
-                    if (winningWord[i] == guessedLetter)
-                    {
-                        hiddenWord.Replace(char.Parse("_"), guessedLetter, i, 1);
-                        Console.WriteLine("hello?");
-                        hit = true;
-                    }
-                    else if (winningWord[i] != guessedLetter && hit != true)
-                    {
-                        Console.WriteLine("Letter" + guessedLetter + "is not in the word.");
-                        guesses++;
-                        Console.WriteLine("you have guessed " + guesses + " times");
-                    }
-                    hit = false;
+            //        if (winningWord[i] == guessedLetter)
+            //        {
+            //            hiddenWord.Replace(char.Parse("_"), guessedLetter, i, 1);
+            //            Console.WriteLine("hello?");
+            //            hit = true;
+            //        }
+            //        else if (winningWord[i] != guessedLetter && hit != true)
+            //        {
+            //            Console.WriteLine("Letter" + guessedLetter + "is not in the word.");
+            //            wrongGuesses++;
+            //            Console.WriteLine("you have guessed " + wrongGuesses + " times");
+            //        }
+            //        hit = false;
                     
-                }
+            //    }
 
-            }
-
-        Console.WriteLine(hiddenWord);
+            //}
 
             Console.WriteLine("The Program is Over");
             Console.ReadKey();
