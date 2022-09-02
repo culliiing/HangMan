@@ -7,40 +7,11 @@ namespace HangMan
     class Program
     {
         // Turn all letters in any string into underscores
-        //public static StringBuilder HideWord(string word)
-        //{
-        //    StringBuilder hiddenWord = new StringBuilder();
-
-        //    foreach (char c in word)
-        //    {
-        //        if (c != char.Parse(" "))
-        //        {
-        //            hiddenWord.Append("_");
-        //        }
-        //        else
-        //        {
-        //            hiddenWord.Append(' ');
-        //        }
-        //    }
-        //    return hiddenWord;
-        //}
-
-        static void Main(string[] args)
+        public static StringBuilder HideWord(string word)
         {
-            int wrongGuesses = 0;
-            int guesses = 0;
-            string guess;
-
-            List<string> wordList = new List<string> {"Banana", "The United Kingdom", "Cow"};
-
-            // Pick a random word from the list (stored in winningWord)
-            Random random = new Random();
-            string winningWord = wordList[random.Next(wordList.Count)];
-
-            // Creating a censored version of the winningWord
             StringBuilder hiddenWord = new StringBuilder();
 
-            foreach (char c in winningWord)
+            foreach (char c in word)
             {
                 if (c != char.Parse(" "))
                 {
@@ -51,9 +22,44 @@ namespace HangMan
                     hiddenWord.Append(' ');
                 }
             }
+            return hiddenWord;
+        }
+
+        public static bool LetterInWordChecker(char letter, string word)
+        {            
+            if (word.Contains(letter))
+            {
+                Console.WriteLine("Your letter is in the word.");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Your letter is not in the word.");
+                return false;
+                //wrongGuesses++;
+            }
+
+        }
+
+        static void Main(string[] args)
+        {
+            int wrongGuesses = 0;
+            int guesses = 0;
+            string guess;
+
+            List<string> wordList = new List<string> {"Banana", "The United Kingdom", "Cow"};
+
+            List<char> guessedLettersList = new List<char>();
+
+            // Pick a random word from the list (stored in winningWord)
+            Random random = new Random();
+            string winningWord = wordList[random.Next(wordList.Count)];
+
+            // Creating a censored version of the winningWord
+            StringBuilder hiddenWord = HideWord(winningWord);
 
             // Game loop
-            while (wrongGuesses < 3)
+            while (wrongGuesses < 6)
             {
                 Console.WriteLine(winningWord);
                 Console.WriteLine(hiddenWord);
@@ -61,28 +67,38 @@ namespace HangMan
                 Console.WriteLine("Guess a letter!");
 
                 // Taking the first character of the user's input
+                // (!!!) Result may be null if user doesn't input anything, which will crash the program
                 guess = Console.ReadLine();
                 char guessedLetter = guess[0];
 
-                // Replace appropriate underscores with user's guessedLetter
-                for (int i = 0; i < winningWord.Length; i++)
-			    {
-                    if (guessedLetter == winningWord[i])
-                    {
-                        hiddenWord.Replace(char.Parse("_"), winningWord[i], i, 1);
-                    }
-			    }
-
-                // Inform user and register result
-                if (winningWord.Contains(guessedLetter))
+                if (guessedLettersList.Contains(guessedLetter))
                 {
-                    Console.WriteLine("Your letter is in the word.");
+                    Console.WriteLine("You have already guessed this letter. Please guess a different letter.");
                 }
                 else
-	            {
-                    Console.WriteLine("Your letter is not in the word.");
-                    wrongGuesses++;
-	            }
+                {
+                    // Inform user and register result
+                    if (winningWord.Contains(guessedLetter))
+                    {
+                        Console.WriteLine("Your letter is in the word.");
+
+                        // Replace appropriate underscores with the correct letter
+                        for (int i = 0; i < winningWord.Length; i++)
+                        {
+                            if (guessedLetter == winningWord[i])
+                            {
+                                hiddenWord.Replace(char.Parse("_"), winningWord[i], i, 1);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Your letter is not in the word.");
+                        wrongGuesses++;
+                    }
+
+                    guessedLettersList.Add(guessedLetter);
+                }
             }
 
             //while (wrongGuesses <= 6)
