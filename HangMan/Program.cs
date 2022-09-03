@@ -44,8 +44,8 @@ namespace HangMan
         static void Main(string[] args)
         {
             int wrongGuesses = 0;
-            int guesses = 0;
-            string guess;
+            int correctGuesses = 0;
+            char guessedLetter;
 
             List<string> wordList = new List<string> {"Banana", "The United Kingdom", "Cow"};
 
@@ -61,6 +61,8 @@ namespace HangMan
             // Game loop
             while (wrongGuesses < 6)
             {
+                Console.Clear();
+
                 Console.WriteLine(winningWord);
                 Console.WriteLine(hiddenWord);
 
@@ -68,37 +70,34 @@ namespace HangMan
 
                 // Taking the first character of the user's input
                 // (!!!) Result may be null if user doesn't input anything, which will crash the program
-                guess = Console.ReadLine();
-                char guessedLetter = guess[0];
+                guessedLetter = Console.ReadLine()[0];
 
+                // Inform user and register result
                 if (guessedLettersList.Contains(guessedLetter))
                 {
                     Console.WriteLine("You have already guessed this letter. Please guess a different letter.");
                 }
-                else
+                else if (winningWord.Contains(guessedLetter))
                 {
-                    // Inform user and register result
-                    if (winningWord.Contains(guessedLetter))
-                    {
-                        Console.WriteLine("Your letter is in the word.");
+                    Console.WriteLine("Your letter is in the word.");
 
-                        // Replace appropriate underscores with the correct letter
-                        for (int i = 0; i < winningWord.Length; i++)
+                    // Replace appropriate underscores with the correct letter
+                    for (int i = 0; i < winningWord.Length; i++)
+                    {
+                        if (guessedLetter == winningWord[i])
                         {
-                            if (guessedLetter == winningWord[i])
-                            {
-                                hiddenWord.Replace(char.Parse("_"), winningWord[i], i, 1);
-                            }
+                            hiddenWord.Replace(char.Parse("_"), winningWord[i], i, 1);
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("Your letter is not in the word.");
-                        wrongGuesses++;
-                    }
-
-                    guessedLettersList.Add(guessedLetter);
+                    correctGuesses++;
                 }
+                else
+                {
+                    Console.WriteLine("Your letter is not in the word.");
+                    wrongGuesses++;
+                }
+
+                guessedLettersList.Add(guessedLetter);
             }
 
             //while (wrongGuesses <= 6)
