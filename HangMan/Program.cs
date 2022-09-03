@@ -122,7 +122,7 @@ namespace HangMan
 
             // Game start
             NewGameState(hiddenWord.ToString(), wrongGuesses);
-            Console.WriteLine("Guess a letter! You may also guess the exact word if you have ");
+            Console.WriteLine("Guess a letter! You may also guess the exact word if you have figured it out!");
 
             // Game loop
             while (wrongGuesses < 6 && hiddenWord.ToString().Contains("_") == true)
