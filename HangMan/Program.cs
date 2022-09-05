@@ -8,21 +8,24 @@ namespace HangMan
     {
         public static void DrawGraphics(int stage)
         {
+            Console.WriteLine("Welcome to HangMan!");
+            Console.WriteLine("_________________________________________________");
+
             if (stage >= 6)
             {
                 Console.WriteLine("########");
                 Console.WriteLine("#     | ");
-                Console.WriteLine("#     O/");
-                Console.WriteLine("#    /I ");
-                Console.WriteLine("#    // ");
+                Console.WriteLine("#     O");
+                Console.WriteLine("#    /I\\");
+                Console.WriteLine("#    / \\");
                 Console.WriteLine("#_______");
             }
             else if (stage == 5)
             {
                 Console.WriteLine("########");
                 Console.WriteLine("#     | ");
-                Console.WriteLine("#     O/");
-                Console.WriteLine("#    /I ");
+                Console.WriteLine("#     O");
+                Console.WriteLine("#    /I\\ ");
                 Console.WriteLine("#    /  ");
                 Console.WriteLine("#_______");
             }
@@ -30,8 +33,8 @@ namespace HangMan
             {
                 Console.WriteLine("########");
                 Console.WriteLine("#     | ");
-                Console.WriteLine("#     O/");
-                Console.WriteLine("#    /I ");
+                Console.WriteLine("#     O");
+                Console.WriteLine("#    /I\\ ");
                 Console.WriteLine("#       ");
                 Console.WriteLine("#_______");
             }
@@ -100,97 +103,120 @@ namespace HangMan
         {
             Console.Clear();
             DrawGraphics(stage);
-            Console.WriteLine("The word is: " + word);
+            Console.WriteLine("\r\nThe word is: " + word);
+            Console.WriteLine("You have " + (6 - stage) + " wrong attempts left.");
         }
 
         static void Main(string[] args)
         {
-            int wrongGuesses = 0;
-            char guessedLetter;
-            string guess;
+            bool playGame = true;
 
-            List<string> wordList = new() {"Banana", "Mother-in-law", "Cow", "High School"};
-            List<char> guessedLettersList = new();
-            List<string> guessesList = new();
-
-            // Pick a random word from the wordList
-            Random random = new Random();
-            string winningWord = wordList[random.Next(wordList.Count)].ToUpper();
-
-            // Creating a censored version of the winningWord
-            StringBuilder hiddenWord = HideWord(winningWord);
-
-            // Game start
-            NewGameState(hiddenWord.ToString(), wrongGuesses);
-            Console.WriteLine("Guess a letter! You may also guess the exact word if you have figured it out!");
-
-            // Game loop
-            while (wrongGuesses < 6 && hiddenWord.ToString().Contains("_") == true)
+            // Program loop
+            while (playGame)
             {
-                // (!!!) Result may be null if user doesn't input anything, which will crash the program (FIX LATER.)
-                guess = Console.ReadLine().ToUpper();
-                guessedLetter = guess[0];
+                int wrongGuesses = 0;
+                char guessedLetter;
+                string guess;
 
-                // Inform user and register result of the guess
-                if (guess.Length > 1 && guessesList.Contains(guess))
+                List<string> wordList = new() {"Banana", "Mother-in-law", "Cow", "High School", "Destitute", "Dungeons and Dragons", "Pikachu", "Eevee", "Charizard", "Snorlax"};
+                List<char> guessedLettersList = new();
+                List<string> guessesList = new();
+
+                // Pick a random word from the wordList
+                Random random = new Random();
+                string winningWord = wordList[random.Next(wordList.Count)].ToUpper();
+
+                // Creating a censored version of the winningWord
+                StringBuilder hiddenWord = HideWord(winningWord);
+
+                // Game start
+                NewGameState(hiddenWord.ToString(), wrongGuesses);
+                Console.WriteLine("\r\nGuess a letter! \nYou may also guess the exact word if you have figured it out!");
+
+                // Game loop
+                while (wrongGuesses < 6 && hiddenWord.ToString().Contains("_") == true)
                 {
-                    NewGameState(hiddenWord.ToString(), wrongGuesses);
-                    Console.WriteLine("You have already guessed the word '" + guess + "'. Guess again!");
-                }
-                else if (guess == winningWord)
-                {
-                    break;
-                }
-                else if (guess.Length > 1)
-                {
-                    wrongGuesses++;
-                    NewGameState(hiddenWord.ToString(), wrongGuesses);
-                    Console.WriteLine("'" + guess + "'" + " is not the word. Guess again!");
-                    guessesList.Add(guess);
-                }
-                else if (guessedLettersList.Contains(guessedLetter))
-                {
-                    NewGameState(hiddenWord.ToString(), wrongGuesses);
-                    Console.WriteLine("You have already guessed the letter " + guessedLetter + ". Guess again!");
-                }
-                else if (winningWord.Contains(guessedLetter))
-                {
-                    // Replace appropriate underscores with the guessedLetter
-                    for (int i = 0; i < winningWord.Length; i++)
+                    // Take user input
+                    guess = Console.ReadLine().ToUpper();
+
+                    if (!string.IsNullOrEmpty(guess))
                     {
-                        if (guessedLetter == winningWord[i])
+                        guessedLetter = guess[0];
+
+                        // Check if user guessed a word
+                        if (guess.Length > 1)
                         {
-                            hiddenWord.Replace(char.Parse("_"), winningWord[i], i, 1);
+                            if (guess == winningWord)
+                            {
+                                break;
+                            }
+                            else if (guessesList.Contains(guess))
+                            {
+                                NewGameState(hiddenWord.ToString(), wrongGuesses);
+                                Console.WriteLine("\r\nYou have already guessed the word '" + guess + "'. Guess again!");
+                            }
+                            else
+                            {
+                                wrongGuesses++;
+                                NewGameState(hiddenWord.ToString(), wrongGuesses);
+                                Console.WriteLine("\r\n'" + guess + "'" + " is not the word. Guess again!");
+                                guessesList.Add(guess);
+                            }
+                        }
+                        // Check if user guessed a letter
+                        else //if guess.Length == 1
+                        {
+                            if (guessedLettersList.Contains(guessedLetter))
+                            {
+                                NewGameState(hiddenWord.ToString(), wrongGuesses);
+                                Console.WriteLine("\r\nYou have already guessed the letter " + guessedLetter + ". Guess again!");
+                            }
+                            else if (winningWord.Contains(guessedLetter))
+                            {
+                                // Replace appropriate underscores with the guessedLetter
+                                for (int i = 0; i < winningWord.Length; i++)
+                                {
+                                    if (guessedLetter == winningWord[i])
+                                    {
+                                        hiddenWord.Replace(char.Parse("_"), winningWord[i], i, 1);
+                                    }
+                                }
+
+                                NewGameState(hiddenWord.ToString(), wrongGuesses);
+                                Console.WriteLine("\r\nThe letter " + guessedLetter + " is in the word. Guess again!");
+                                guessedLettersList.Add(guessedLetter);
+                            }
+                            else
+                            {
+                                wrongGuesses++;
+                                NewGameState(hiddenWord.ToString(), wrongGuesses);
+                                Console.WriteLine("\r\nThe letter " + guessedLetter + " is not in the word. Guess again!");
+                                guessedLettersList.Add(guessedLetter);
+
+                            }
                         }
                     }
-
-                    NewGameState(hiddenWord.ToString(), wrongGuesses);
-                    Console.WriteLine("The letter " + guessedLetter + " is in the word. Guess again!");
-                    guessedLettersList.Add(guessedLetter);
                 }
+
+                // End of game results
+                NewGameState(winningWord, wrongGuesses);
+                if (wrongGuesses >= 6)
+                {
+                    Console.WriteLine("GAME OVER! The man has been hanged. You ran out of guesses.");                }
                 else
                 {
-                    wrongGuesses++;
-                    NewGameState(hiddenWord.ToString(), wrongGuesses);
-                    Console.WriteLine("The letter " + guessedLetter + " is not in the word. Guess again!");
-                    guessedLettersList.Add(guessedLetter);
+                    NewGameState(winningWord, wrongGuesses);
+                    Console.WriteLine("\r\nCongratulations! You have saved the man and beat the game!");
+                }
+
+                Console.WriteLine("Press Q and then Enter to quit, or press any other key and then Enter to continue.");
+                string keyStroke = Console.ReadLine().ToUpper();
+                if (keyStroke == "Q")
+                {
+                    playGame = false;
                 }
             }
-
-            // End of game results
-            NewGameState(winningWord, wrongGuesses);
-            if (wrongGuesses >= 6)
-            {
-                Console.WriteLine("GAME OVER! The man has been hanged. You ran out of guesses.");
-            }
-            else
-            {
-                NewGameState(winningWord, wrongGuesses);
-                Console.WriteLine("Congratulations! You have saved the man and beat the game!");
-            }
-
-            Console.WriteLine("Press any key to exit.");
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
