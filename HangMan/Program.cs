@@ -6,10 +6,441 @@ namespace HangMan
 {
     class Program
     {
+        public static void YouWon() //print out animation text when you won
+        {
+            Console.Clear();
+            Console.WriteLine("#     #");
+            Console.WriteLine(" #   #");
+            Console.WriteLine("   #");
+            Console.WriteLine("   #");
+            Console.WriteLine("   #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("#     #  ");
+            Console.WriteLine(" #   #   #");
+            Console.WriteLine("   #     #");
+            Console.WriteLine("   #     #");
+            Console.WriteLine("   #     ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("     #   #");
+            Console.WriteLine("#   #   #");
+            Console.WriteLine("  #     #");
+            Console.WriteLine("  #     #");
+            Console.WriteLine("  #      #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("    #   ##");
+            Console.WriteLine("   #   #");
+            Console.WriteLine(" #     #");
+            Console.WriteLine(" #     #");
+            Console.WriteLine(" #      ##");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("   #   ###");
+            Console.WriteLine("  #   #");
+            Console.WriteLine("      #");
+            Console.WriteLine("      #");
+            Console.WriteLine("       ###");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("  #   ####");
+            Console.WriteLine("     #");
+            Console.WriteLine("     #");
+            Console.WriteLine("     #");
+            Console.WriteLine("      ####");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("     #####");
+            Console.WriteLine("    #");
+            Console.WriteLine("    #");
+            Console.WriteLine("    #");
+            Console.WriteLine("     #####");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("    #####");
+            Console.WriteLine("   #     #");
+            Console.WriteLine("   #     #");
+            Console.WriteLine("   #     #");
+            Console.WriteLine("    #####");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("   #####  ");
+            Console.WriteLine("        # ");
+            Console.WriteLine("        # ");
+            Console.WriteLine("        # ");
+            Console.WriteLine("   #####  ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("   ####   #");
+            Console.WriteLine("       #  #");
+            Console.WriteLine("       #  #");
+            Console.WriteLine("       #  #");
+            Console.WriteLine("   ####   ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("   ###   #");
+            Console.WriteLine("      #  #");
+            Console.WriteLine("      #  #");
+            Console.WriteLine("      #  #");
+            Console.WriteLine("   ###    #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("   ##   #");
+            Console.WriteLine("     #  #");
+            Console.WriteLine("     #  #");
+            Console.WriteLine("     #  #");
+            Console.WriteLine("   ##    ##");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("   #   #");
+            Console.WriteLine("    #  #");
+            Console.WriteLine("    #  #");
+            Console.WriteLine("    #  #");
+            Console.WriteLine("   #    ###");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("      #");
+            Console.WriteLine("   #  #");
+            Console.WriteLine("   #  #");
+            Console.WriteLine("   #  #");
+            Console.WriteLine("       ####");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("     #");
+            Console.WriteLine("     #");
+            Console.WriteLine("     #");
+            Console.WriteLine("     #");
+            Console.WriteLine("      #####");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("    #     #");
+            Console.WriteLine("    #     #");
+            Console.WriteLine("    #     #");
+            Console.WriteLine("    #     #");
+            Console.WriteLine("     #####");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("   #     # ");
+            Console.WriteLine("   #     # ");
+            Console.WriteLine("   #     # ");
+            Console.WriteLine("   #     # ");
+            Console.WriteLine("    #####  ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+
+            Console.WriteLine("#     #   #####   #     #        #             #   #####   ##     #");
+            Console.WriteLine(" #   #   #     #  #     #         #     #     #   #     #  #  #   #");
+            Console.WriteLine("   #     #     #  #     #          #   # #   #    #     #  #   #  #");
+            Console.WriteLine("   #     #     #  #     #           # #   # #     #     #  #    # #");
+            Console.WriteLine("   #      #####    #####             #     #       #####   #     ##");
+
+        }
+        public static void YouLost() //print out animation text when you lost
+        {
+            Console.Clear();
+            Console.WriteLine("#######");
+            Console.WriteLine("#");
+            Console.WriteLine("#   ###");
+            Console.WriteLine("#     #");
+            Console.WriteLine("#######");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("###### ");
+            Console.WriteLine("");
+            Console.WriteLine("   ### ");
+            Console.WriteLine("     # ");
+            Console.WriteLine("###### ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("##### ");
+            Console.WriteLine("       ");
+            Console.WriteLine("  ###  ");
+            Console.WriteLine("    #  ");
+            Console.WriteLine("#####  ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("####  ");
+            Console.WriteLine("       ");
+            Console.WriteLine(" ###   ");
+            Console.WriteLine("   #   ");
+            Console.WriteLine("####   #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("###    ");
+            Console.WriteLine("        ");
+            Console.WriteLine("###     ");
+            Console.WriteLine("  #    #");
+            Console.WriteLine("###   #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("##    ");
+            Console.WriteLine("       ");
+            Console.WriteLine("##     #");
+            Console.WriteLine(" #    ##");
+            Console.WriteLine("##   #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("#      ");
+            Console.WriteLine("       #");
+            Console.WriteLine("#     #");
+            Console.WriteLine("#    ###");
+            Console.WriteLine("#   #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("       #");
+            Console.WriteLine("      #");
+            Console.WriteLine("     # ");
+            Console.WriteLine("    ####");
+            Console.WriteLine("   #   ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("      #");
+            Console.WriteLine("     # #");
+            Console.WriteLine("    #   #");
+            Console.WriteLine("   ###### ");
+            Console.WriteLine("  #      ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("     #");
+            Console.WriteLine("    # #");
+            Console.WriteLine("   #   #");
+            Console.WriteLine("  ####### ");
+            Console.WriteLine(" #       #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("    #     ");
+            Console.WriteLine("   # #    ");
+            Console.WriteLine("  #   #   ");
+            Console.WriteLine(" #######  ");
+            Console.WriteLine("#       # ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("   #      ");
+            Console.WriteLine("  # #     ");
+            Console.WriteLine(" #   #    ");
+            Console.WriteLine("#######   ");
+            Console.WriteLine("       #  ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("  #       ");
+            Console.WriteLine(" # #      ");
+            Console.WriteLine("#   #     ");
+            Console.WriteLine("######    ");
+            Console.WriteLine("      #  #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine(" #       ");
+            Console.WriteLine("# #      ");
+            Console.WriteLine("   #     ");
+            Console.WriteLine("#####    #");
+            Console.WriteLine("     #  #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("#       ");
+            Console.WriteLine(" #      ");
+            Console.WriteLine("  #      #");
+            Console.WriteLine("####    #");
+            Console.WriteLine("    #  #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("       ");
+            Console.WriteLine("#        #");
+            Console.WriteLine(" #      #");
+            Console.WriteLine("###    #");
+            Console.WriteLine("   #  #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("         #");
+            Console.WriteLine("        #");
+            Console.WriteLine("#      #");
+            Console.WriteLine("##    #");
+            Console.WriteLine("  #  #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("        #");
+            Console.WriteLine("       # #");
+            Console.WriteLine("      #");
+            Console.WriteLine("#    #");
+            Console.WriteLine(" #  #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("       # #");
+            Console.WriteLine("      # # ");
+            Console.WriteLine("     #    ");
+            Console.WriteLine("    #     ");
+            Console.WriteLine("#  #      ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("      # #");
+            Console.WriteLine("     # # #");
+            Console.WriteLine("    #    ");
+            Console.WriteLine("   #     ");
+            Console.WriteLine("  #      ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("     # #");
+            Console.WriteLine("    # # #");
+            Console.WriteLine("   #     #");
+            Console.WriteLine("  #     ");
+            Console.WriteLine(" #      ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("    # #");
+            Console.WriteLine("   # # #");
+            Console.WriteLine("  #     #");
+            Console.WriteLine(" #       #");
+            Console.WriteLine("#      ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("   # #");
+            Console.WriteLine("  # # #");
+            Console.WriteLine(" #     #");
+            Console.WriteLine("#       #");
+            Console.WriteLine("         #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("  # #     ");
+            Console.WriteLine(" # # #    ");
+            Console.WriteLine("#     #   ");
+            Console.WriteLine("       #  ");
+            Console.WriteLine("        # ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine(" # #      ");
+            Console.WriteLine("# # #     ");
+            Console.WriteLine("     #    ");
+            Console.WriteLine("      #   ");
+            Console.WriteLine("       #  ");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("# #      #");
+            Console.WriteLine(" # #     #");
+            Console.WriteLine("    #    #");
+            Console.WriteLine("     #   #");
+            Console.WriteLine("      #  #");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine(" #      ##");
+            Console.WriteLine("# #     #");
+            Console.WriteLine("   #    ##");
+            Console.WriteLine("    #   #");
+            Console.WriteLine("     #  ##");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("#      ###");
+            Console.WriteLine(" #     #");
+            Console.WriteLine("  #    ###");
+            Console.WriteLine("   #   #");
+            Console.WriteLine("    #  ###");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("      ####");
+            Console.WriteLine("#     #");
+            Console.WriteLine(" #    ####");
+            Console.WriteLine("  #   #");
+            Console.WriteLine("   #  ####");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("     #####");
+            Console.WriteLine("     #");
+            Console.WriteLine("#    #####");
+            Console.WriteLine(" #   #");
+            Console.WriteLine("  #  #####");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("    ######");
+            Console.WriteLine("    #");
+            Console.WriteLine("    ######");
+            Console.WriteLine("#   #");
+            Console.WriteLine(" #  ######");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("   #######");
+            Console.WriteLine("   #");
+            Console.WriteLine("   #######");
+            Console.WriteLine("   #");
+            Console.WriteLine("#  #######");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine("  ########");
+            Console.WriteLine("  #");
+            Console.WriteLine("  ########");
+            Console.WriteLine("  #");
+            Console.WriteLine("  ########");
+            Thread.Sleep(300);
+            Console.Clear();
+
+            Console.WriteLine(" ########");
+            Console.WriteLine(" #");
+            Console.WriteLine(" ########");
+            Console.WriteLine(" #");
+            Console.WriteLine(" ########");
+            Thread.Sleep(300);
+            Console.Clear();
+
+
+            Console.WriteLine("#######      #          # #      ########          ######   #       #  ########  #####        ######");
+            Console.WriteLine("#           # #        # # #     #                #      #   #     #   #         #    #      # X  X #");
+            Console.WriteLine("#   ###    #   #      #  #  #    ########         #      #    #   #    ########  #####        ######");
+            Console.WriteLine("#     #   #######    #       #   #                #      #     # #     #         #   #         #!!#");
+            Console.WriteLine("#######  #       #  #         #  ########          ######       #      ########  #    #       ######");
+
+        }
+
         public static void DrawGraphics(int stage)
         {
             Console.WriteLine("Welcome to HangMan!");
-            Console.WriteLine("_________________________________________________");
+            Console.WriteLine("____________________");
 
             if (stage >= 6)
             {
@@ -122,9 +553,20 @@ namespace HangMan
                 List<char> guessedLettersList = new();
                 List<string> guessesList = new();
 
+                Console.Clear();
+
                 // Pick a random word from the wordList
                 Random random = new Random();
                 string winningWord = wordList[random.Next(wordList.Count)].ToUpper();
+
+                // Allow the user to enter their own word
+                Console.WriteLine("Enter a word to begin. If you want a random word, leave blank and hit enter.");
+                string userWord = Console.ReadLine().ToUpper();
+
+                if (!string.IsNullOrEmpty(userWord))
+                {
+                    winningWord = userWord;
+                }
 
                 // Creating a censored version of the winningWord
                 StringBuilder hiddenWord = HideWord(winningWord);
@@ -199,13 +641,16 @@ namespace HangMan
                 }
 
                 // End of game results
-                NewGameState(winningWord, wrongGuesses);
                 if (wrongGuesses >= 6)
                 {
-                    Console.WriteLine("GAME OVER! The man has been hanged. You ran out of guesses.");                }
+                    YouLost();
+                    Console.WriteLine("\r\nThe word was " + winningWord + "!");
+                    Console.WriteLine("\r\nGAME OVER! The man has been hanged. You ran out of guesses.");
+                }
                 else
                 {
-                    NewGameState(winningWord, wrongGuesses);
+                    YouWon();
+                    Console.WriteLine("\r\nThe word was " + winningWord + "!");
                     Console.WriteLine("\r\nCongratulations! You have saved the man and beat the game!");
                 }
 
